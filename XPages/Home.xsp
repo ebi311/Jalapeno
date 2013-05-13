@@ -123,116 +123,37 @@
     		    </xp:tabPanel>
     		</xp:tabbedPanel>
     		<xp:panel xp:key="ColRight">
-    			<xc:Section title="連絡先" isOpen="true">
-    				<xp:this.facets>
-    					<xc:DataList xp:key="chunk">
-    						<xc:this.data>
-    							<xp:dataContext var="item"
-    								indexVar="index">
-    								<xp:this.value><![CDATA[#{javascript:[{"text":"長谷川 xx-xxxx"},
-{"text":"小山田 xx-xxxx"},
-{"text":"栫 xx-xxxx"}]}]]></xp:this.value>
-    							</xp:dataContext>
-    						</xc:this.data>
-
-
-
-    						<xc:this.deleteEventHandler>
-    							<xp:executeScript>
-    								<xp:this.script><![CDATA[#{javascript:print("hoge!!!" + item.text);}]]></xp:this.script>
-    							</xp:executeScript>
-    						</xc:this.deleteEventHandler>
-    						<xp:this.facets>
-    							<xp:link escape="true"
-    								text="#{javascript:item.text;}" id="link1"
-    								xp:key="linkRow">
-    							</xp:link>
-    						</xp:this.facets>
-
-
-    					</xc:DataList>
-    				</xp:this.facets>
-    			</xc:Section>
-    			<xc:Section title="クイックリンク" isOpen="false">
-    				<xp:this.facets>
-    					<xc:DataList xp:key="chunk">
-    						<xc:this.data>
-    							<xp:dataContext var="item"
-    								indexVar="index">
-    								<xp:this.value><![CDATA[#{javascript:[{
-	title:"RITSポータル",
-	href:"./"
-},{
-	title:"出退勤",
-	href:"./"
-},{
-	title:"GVAS",
-	href:"./"
-},{
-	title:"SynCro",
-	href:"./"
-}];}]]></xp:this.value>
-    							</xp:dataContext>
-    						</xc:this.data>
-    						<xc:this.deleteEventHandler>
-    							<xp:executeScript>
-    								<xp:this.script><![CDATA[#{javascript:""}]]></xp:this.script>
-    							</xp:executeScript>
-    						</xc:this.deleteEventHandler>
-    						<xp:this.facets>
-    							<xp:link escape="true"
-    								text="#{javascript:item.title}" id="link2" xp:key="linkRow"
-    								value="#{javascript:item.href}">
-    							</xp:link>
-    						</xp:this.facets>
-    					</xc:DataList>
-    				</xp:this.facets>
-    			</xc:Section>
+    			
+    			
     		</xp:panel>
     		<xc:MenuSection xp:key="ColLeft">
     			<xc:this.MemuGroup>
     				<xc:MemuGroup>
-    					<xc:this.Headline>
-    						<xc:Headline text="意見"></xc:Headline>
-    					</xc:this.Headline>
-    					<xc:this.Items>
-    						<xc:Items selected="true" text="カテゴリ別"
-    						    href="./Category.xsp">
-    						</xc:Items>
-    						<xc:Items selected="false" text="作成者別"
-    						    href="./Creator.xsp">
-    						</xc:Items>
-    						<xc:Items selected="false" text="更新日別"
-    						    href="./update.xsp">
-    						</xc:Items>
-    					</xc:this.Items>
+
+    				    <xc:this.Items>
+    				        <xc:Items selected="true" text="集計参照"
+    				            href="./Home.xsp">
+    				        </xc:Items>
+    				        <xc:Items selected="false" text="入力"
+    				            href="./Creator.xsp">
+    				        </xc:Items>
+    				        <xc:Items selected="false"
+    				            href="./update.xsp" text="過去訂正">
+    				        </xc:Items>
+    				        <xc:Items text="システム" selected="false"></xc:Items>
+    				    </xc:this.Items>
+    				    <xc:this.Headline>
+    				        <xc:Headline></xc:Headline>
+    				    </xc:this.Headline>
     				</xc:MemuGroup>
-    				<xc:MemuGroup>
-    					<xc:this.Items>
-    						<xc:Items selected="false" text="カテゴリ別"
-    						    href="./Category.xsp">
-    						</xc:Items>
-    						<xc:Items selected="false" text="質問者別"
-    						    href="./Creator.xsp">
-    						</xc:Items>
-    						<xc:Items selected="false" text="ステータス別"
-    						    href="./Status.xsp">
-    						</xc:Items>
-    						<xc:Items selected="false" text="更新日順"
-    						    href="./Update.xsp">
-    						</xc:Items>
-    					</xc:this.Items>
-    					<xc:this.Headline>
-    						<xc:Headline text="やり取り"></xc:Headline>
-    					</xc:this.Headline>
-    				</xc:MemuGroup>
+    				
     			</xc:this.MemuGroup>
     		</xc:MenuSection>
     	</xp:this.facets>
     	<xc:this.Visibility>
     		<xc:Visibility showBanner="true" showTitleBar="true"
-    			showContent="true" showLeft="true" showRight="true"
-    			showFooter="true">
+    		    showContent="true" showLeft="true" showRight="false"
+    		    showFooter="true">
     		</xc:Visibility>
     	</xc:this.Visibility>
     	<xc:this.Logo>
@@ -241,17 +162,6 @@
     	<xc:this.Version>
     		<xc:Version number="0.0.0" position="footer"></xc:Version>
     	</xc:this.Version>
-    	<xc:this.Tab>
-    		<xc:Tab separate="false" href="./" label="Home"></xc:Tab>
-    		
-    		
-    		<xc:Tab href="./MasterMaint.xsp" label="マスタ管理"
-    			separate="false">
-    		</xc:Tab>
-    		<xc:Tab separate="true" href="./SystemSettings.xsp"
-    			label="システム管理">
-    		</xc:Tab>
-
-    	</xc:this.Tab>
+    	
     </xc:OutlineFrame>
 </xp:view>
