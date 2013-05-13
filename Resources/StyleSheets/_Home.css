@@ -1,0 +1,54 @@
+div.topMenuLayout{
+    width: 955px;
+}
+div.topMenuLayout > div.lane {
+    float:left;
+    width: 175px;
+    padding: 0 5px;
+}
+
+div.topMenuLayout > div.lane h2{
+    margin: 0;
+}
+div.topMenuLayout > div.lane div.lotusSectionBody {
+    text-align: center;
+}
+div.topMenuLayout > div.lane div.lotusSectionBody span.lotusBtn{
+    width: 95%;
+    margin: 3px 0;
+    font-size: 1.1em;
+}
+div.topMenuLayout > div.lane div.lotusSectionBody span.lotusBtn a{
+    letter-spacing: 5px;
+    padding: 0.5em 0;
+    font-weight: normal;
+    line-height: 1.2em;
+    background-color: #dfe6f3;
+    background: -webkit-linear-gradient(top, #edf4ff 0%,#dfe6f3 100%); /* Chrome10+,Safari5.1+ */
+    background: linear-gradient(to bottom, #edf4ff 0%,#dfe6f3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#edf4ff', endColorstr='#dfe6f3',GradientType=0 ); /* IE6-9 */
+}
+div.topMenuLayout > div.lane div.lotusSectionBody span.lotusBtn a:hover{
+    background-color: #adc8e7;
+    background: -webkit-linear-gradient(top, #d1e6ff 0%,#adc8e7 100%); /* Chrome10+,Safari5.1+ */
+    background: linear-gradient(to bottom, #d1e6ff 0%,#adc8e7 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d1e6ff', endColorstr='#adc8e7',GradientType=0 ); /* IE6-9 */
+}
+div.topMenuLayout > div.lane div.commonJob div.lotusSectionBody span.lotusBtn a{
+    background-color: #edbebb;
+    background: -webkit-linear-gradient(top, #f7e0df 0%,#edbebb 100%); /* Chrome10+,Safari5.1+ */
+    background: linear-gradient(to bottom, #f7e0df 0%,#edbebb 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7e0df', endColorstr='#edbebb',GradientType=0 ); /* IE6-9 */
+}
+div.topMenuLayout > div.lane div.commonJob div.lotusSectionBody span.lotusBtn a:hover{
+    background-color: #f67872;
+    background: -webkit-linear-gradient(top, #fcbfbc 0%,#f67872 100%); /* Chrome10+,Safari5.1+ */
+    background: linear-gradient(to bottom, #fcbfbc 0%,#f67872 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcbfbc', endColorstr='#f67872',GradientType=0 ); /* IE6-9 */
+}
+div.topMenuLayout > div.lane div.lotusSectionBody span.lotusBtn a.narrow{
+    letter-spacing: 3px;
+}
+div.topMenuLayout > div.lane .lotusSection {
+    margin-bottom: 10px;
+}

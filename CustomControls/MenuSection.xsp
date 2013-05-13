@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+    <div class="lotusMenu ">
+        <div class="lotusBottomCorner ">
+            <div class="lotusInner">
+                <xp:repeat id="repeat1" rows="99"
+                    value="#{javascript:compositeData.MemuGroup;}"
+                    var="group" indexVar="index">
+                    <div class="lotusMenuSection">
+                        <xp:text escape="true" id="title"
+                            value="#{javascript:group.Headline.text}"
+                            styleClass="#{javascript:group.Headline.styleClass}"
+                            style="#{javascript:group.Headline.style}"
+                            tagName="h3">
+                        </xp:text>
+                        <div class="lotusMenuSubsection">
+                            <ul>
+                                <xp:repeat rows="99"
+                                    disableOutputTag="false"
+                                    var="listItem" indexVar="index"
+                                    repeatControls="false"
+                                    value="#{javascript:group.Items}">
+                                    <li role="menuitem"
+                                        class="#{javascript: listItem.selected ? 'lotusSelected' : '';}">
+                                        <xp:link escape="true"
+                                            text="#{javascript:listItem.text}"
+                                            id="link1"
+                                            value="#{javascript:listItem.href}">
+                                        </xp:link>
+                                    </li>
+                                </xp:repeat>
+                            </ul>
+                        </div>
+                    </div>
+                </xp:repeat>
+            </div>
+        </div>
+    </div>
+</xp:view>

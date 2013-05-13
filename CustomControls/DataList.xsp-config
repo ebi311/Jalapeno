@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config>
+  <faces-config-extension>
+    <namespace-uri>http://www.ibm.com/xsp/custom</namespace-uri>
+    <default-prefix>xc</default-prefix>
+  </faces-config-extension>
+  <composite-component>
+    <component-type>DataList</component-type>
+    <composite-name>DataList</composite-name>
+    <composite-file>/DataList.xsp</composite-file>
+    <composite-extension>
+      <designer-extension>
+        <in-palette>true</in-palette>
+      </designer-extension>
+    </composite-extension>
+    <property>
+      <property-name>data</property-name>
+      <property-class>com.ibm.xsp.model.DataContextImpl</property-class>
+      <property-extension>
+        <designer-extension>
+          <editor/>
+        </designer-extension>
+      </property-extension>
+    </property>
+    <property>
+      <property-name>deleteEventHandler</property-name>
+      <property-class>com.ibm.xsp.actions.ExecuteScriptAction</property-class>
+      <property-extension>
+        <designer-extension>
+          <editor/>
+        </designer-extension>
+      </property-extension>
+    </property>
+  </composite-component>
+</faces-config>

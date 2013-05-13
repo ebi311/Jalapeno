@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+    <div class="lotusSection RitsSection">
+        <h2>
+            <a class="lotusSprite lotusArrow #{javascript:compositeData.isOpen ? 'lotusTwistyOpen' : 'lotusTwistyClosed'}" href="javascript:;"
+                title="click to collapse section">
+                <span class="lotusAltText">▼</span>
+            </a>
+            <xp:text styleClass="lotusLeft" id="title"
+                value="#{javascript:compositeData.title;}">
+            </xp:text>
+            <!-- <a class="lotusIcon lotusActionMenu" href="javascript:;"
+                title="click for actions" aria-haspopup="true">
+            </a>-->
+        </h2>
+        <div class="lotusSectionBody" style="display:#{javascript:compositeData.isOpen ? 'block' : 'none'}">
+            <div class="lotusChunk">
+                <xp:callback facetName="chunk" id="chunk"></xp:callback>
+            </div>
+        </div>
+    </div>
+</xp:view>

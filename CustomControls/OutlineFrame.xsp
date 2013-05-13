@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+    <xp:this.resources>
+        <xp:styleSheet href="/OutlineFrame.css"></xp:styleSheet>
+        <xp:script src="/OutlineFrame_JSS.jss" clientSide="false"></xp:script>
+    </xp:this.resources>
+    <xp:this.afterPageLoad><![CDATA[#{javascript:OutlineFrame.afterPageLoad();
+}]]></xp:this.afterPageLoad>
+
+
+    <xp:this.beforeRenderResponse><![CDATA[#{javascript:OutlineFrame.beforRenderResponse();}]]></xp:this.beforeRenderResponse>
+    <div class="lotusFrame">
+        <xp:div styleClass="lotusBanner" role="banner" id="banner"
+            loaded="${javascript:compositeData.Visibility.showBanner;}">
+            <div class="lotusRightCorner">
+                <div class="lotusInner">
+                    <div class="lotusLogo">
+                        <xp:image
+                            url="#{javascript:compositeData.OrgLogo.image}"
+                            id="image1"
+                            loaded="${javascript:compositeData.OrgLogo.image !== null;}">
+                        </xp:image>
+                        <span class="lotusAltText"></span>
+                    </div>
+                    <ul class="lotusInlinelist lotusUtility">
+                        <li class="lotusFirst">
+                            <xp:text escape="true" id="loginUserName"
+                                styleClass="lotusUser">
+                                <xp:this.value><![CDATA[#{javascript:compositeData.loginUserName || @Name("[ABBREVIATE]", @UserName());}]]></xp:this.value>
+                            </xp:text>
+                        </li>
+                    </ul>
+                    <!--
+                        <ul class="lotusInlinelist lotusLinks"
+                        role="navigation"> <li></li> </ul>
+                    -->
+                </div>
+            </div>
+        </xp:div>
+        <xp:div styleClass="lotusTitleBar"
+            loaded="${javascript:compositeData.Visibility.showTitleBar;}">
+            <div class="lotusRightCorner">
+                <div class="lotusInner">
+                    <div class="lotusRight">
+                        <xp:text
+                            value="#{javascript:'ver.' + compositeData.Version.number;}"
+                            loaded="${javascript:compositeData.Version.position === 'titlebar';}">
+                        </xp:text>
+                    </div>
+                    <h2>
+                        <a href="./" title="ホームを開きます">
+                            <div class="lotusLogo">
+                                <xp:image
+                                    url="${javascript:compositeData.Logo.image}"
+                                    loaded="${javascript:compositeData.Logo.image !== null;}"
+                                    style="#{javascript:compositeData.Logo.imageStyle;}">
+                                </xp:image>
+                                <xp:text
+                                    loaded="${javascript:compositeData.Logo.text !== null;}"
+                                    value="#{javascript:compositeData.Logo.text;}"
+                                    style="#{javascript:compositeData.Logo.textStyle;}">
+                                </xp:text>
+                            </div>
+                        </a>
+                    </h2>
+                    <ul class="lotusTabs lotusTabsIndented" role="navigation">
+                        <xp:repeat id="repeat1" rows="30"
+                            disableOutputTag="true" var="tab" indexVar="index">
+                            <xp:this.value><![CDATA[#{javascript:if(compositeData.Tab === null){
+	return [];
+}
+return compositeData.Tab;}]]></xp:this.value>
+                            <li
+                                class="#{javascript:return compositeData.selectedTabLabel === tab.label ? 'lotusSelected' : '';} #{javascript:return tab.separate ? 'separate' : '';}">
+                                <xp:link escape="true"
+                                    text="#{javascript:tab.label;}"
+                                    value="#{javascript:tab.href;}">
+                                </xp:link>
+                            </li>
+                        </xp:repeat>
+                    </ul>
+                </div>
+            </div>
+        </xp:div>
+        <div class="lotusMain">
+            <xp:div styleClass="lotusColLeft"
+                loaded="${javascript:compositeData.Visibility.showLeft;}">
+                <xp:callback facetName="ColLeft" id="ColLeft">
+                </xp:callback>
+            </xp:div>
+            <xp:div styleClass="lotusColRight"
+                loaded="${javascript:compositeData.Visibility.showRight}">
+                <xp:callback facetName="ColRight" id="ColRight">
+                </xp:callback>
+            </xp:div>
+            <xp:div styleClass="lotusContent"
+                loaded="${javascript:compositeData.Visibility.showContent;}">
+                <div class="lotusActionBar2">
+                    <div class="lotusRight">
+                        <xp:callback facetName="ActionButtonsRight"
+                            id="ActionButtonsRight"></xp:callback>
+                    </div>
+                    <div>
+                        <xp:callback facetName="ActionButtonsLeft"
+                            id="ActionButtonsLeft"></xp:callback>
+                    </div>
+                </div>
+                <div class="lotusHeader">
+                    <xp:text tagName="h1"
+                        value="#{javascript:compositeData.PageTitle.text;}"
+                        style="#{javascript:compositeData.PageTitle.style;}"
+                        styleClass="#{javascript:compositeData.PageTitle.styleClass;}">
+                        <xp:this.loaded><![CDATA[${javascript:compositeData.PageTitle !== null && compositeData.pageTitle !== "";}]]></xp:this.loaded>
+                    </xp:text>
+                </div>
+                <xp:callback facetName="Content" id="Content">
+                </xp:callback>
+            </xp:div>
+        </div>
+        <xp:div styleClass="lotusFooter"
+            loaded="${javascript:compositeData.Visibility.showFooter}">
+            <xp:callback facetName="footer" id="footer"></xp:callback>
+            <div class="lotusRight">
+                <xp:text
+                    loaded="${javascript:compositeData.Version.position === 'footer';}"
+                    value="#{javascript:'ver.' + compositeData.Version.number;}">
+                </xp:text>
+            </div>
+        </xp:div>
+    </div>
+    <div class="validateMessage">
+        <div class="lotusMessage errorMessage">
+            <xp:image url="/Stop.png" styleClass="icon"></xp:image>
+            <ul>
+                <li class="messageLine">
+                    <span>This is an error message. It is the
+                        default
+                        message
+                        type. The close icon is optional.
+                    </span>
+                </li>
+                <li class="messageLine">
+                    <span>This is an error message. It is the
+                        default
+                        message
+                        type. The close icon is optional.
+                    </span>
+                </li>
+                <li class="messageLine">
+                    <span>This is an error message. It is the
+                        default
+                        message
+                        type. The close icon is optional.
+                    </span>
+                </li>
+            </ul>
+            <div class="delete">
+                <a href="javascript:;" class="lotusDelete">
+                    <xp:image url="/Blank.png" id="image3"></xp:image>
+                    <span class="lotusAltText">X</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <xp:scriptBlock>
+        <xp:this.value><![CDATA[
+var ValidateMessage = {};
+ValidateMessage.error = {};
+ValidateMessage.info = {};
+ValidateMessage.warnning = {};
+dojo.addOnLoad(function(){
+//IEブラウザモードの互換表示で、IE8以降でもIE7のCSSが当たることの対策
+    (function(){
+        if (dojo.isIE !== undefined && 8 <= dojo.isIE){
+            $('html').removeClass('lotusui_ie7');
+            $('html').removeClass('lotusui_ie');
+        }
+    })();
+    ValidateMessage.error = {
+        show: function(){
+            $('.validateMessage .errorMessage').slideDown(200);
+        },
+        hide: function(){
+            $('.validateMessage .errorMessage').slideUp(200);
+        }
+    }
+    $('.validateMessage .errorMessage a.lotusDelete').click(function(){
+        ValidateMessage.error.hide();
+    });
+});
+if (!window.getComputedStyle) {
+    window.getComputedStyle = function(el, pseudo) {
+        this.el = el;
+        this.getPropertyValue = function(prop) {
+            var re = /(\-([a-z]){1})/g;
+            if (prop == 'float') prop = 'styleFloat';
+            if (re.test(prop)) {
+                prop = prop.replace(re, function () {
+                    return arguments[2].toUpperCase();
+                });
+            }
+            return el.currentStyle[prop] ? el.currentStyle[prop] : null;
+        }
+        return this;
+    }
+}]]></xp:this.value>
+    </xp:scriptBlock>
+</xp:view>

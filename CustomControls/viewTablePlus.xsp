@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" id="root"
+    xmlns:xe="http://www.ibm.com/xsp/coreex" dojoParseOnLoad="true">
+    <xp:this.resources>
+        <xp:script src="/ViewTablePlus_JSS.jss" clientSide="false"></xp:script>
+        <xp:script src="/ViewTablePlus_JS.js" clientSide="true"></xp:script>
+        <xp:styleSheet href="/ViewTablePlus.css"></xp:styleSheet>
+        <xp:dojoModule name="dijit.form.TextBox"></xp:dojoModule>
+    </xp:this.resources>
+
+
+    <xp:this.beforePageLoad><![CDATA[#{javascript:var _this = this;
+(function () {
+	var _manager = new RITS.ViewTablePlus.Manager();
+	_manager._addControle(_this);
+})();
+}]]></xp:this.beforePageLoad>
+
+    <xp:this.afterRestoreView><![CDATA[#{javascript:new RITS.ViewTablePlus.Manager();
+}]]></xp:this.afterRestoreView>
+    <xp:this.afterPageLoad><![CDATA[#{javascript:RITS.ViewTablePlus.Manager.afterPageLoad(this);
+}]]></xp:this.afterPageLoad>
+    <xp:inputHidden id="checkedValues" showReadonlyAsDisabled="true">
+    </xp:inputHidden>
+    <xp:inputHidden id="properties" showReadonlyAsDisabled="true">
+    </xp:inputHidden>
+    <xp:inputHidden id="scrollY_Position" showReadonlyAsDisabled="true"
+        value="0">
+    </xp:inputHidden>
+    <xp:div styleClass="lotusActionBar lotusBtnContainer" loaded="${javascript:context.getUrl().getAddress().match('ContentsView.xsp$');}">
+        <xp:text loaded="${javascript:compositeData.isForManage}">
+            ビュー切替:
+            <xp:comboBox id="ChangeView" value="byDuty">
+
+                <xp:selectItem itemLabel="ステータス別"
+                    itemValue="byStatus">
+                </xp:selectItem>
+                <xp:selectItem itemLabel="業務別" itemValue="byDuty"></xp:selectItem>
+                <xp:selectItem itemLabel="所管部門別" itemValue="byOrg"></xp:selectItem>
+            </xp:comboBox>
+        </xp:text>
+        <xp:text loaded="${javascript:compositeData.isForManage}">
+            &#160;フィルタ:
+            <xp:comboBox id="FiltereDuties">
+                <xp:selectItems>
+                    <xp:this.value><![CDATA[#{javascript:compositeData.filterItems.split("\n");
+}]]></xp:this.value>
+                </xp:selectItems>
+            </xp:comboBox>
+        </xp:text>
+        <xp:span styleClass="lotusSearch">
+            &#160;検索:
+            <xp:inputText id="fullTextSeach"
+                styleClass="lotusText lotusInactive"
+                title="Enter Keywords" style="width: 15em;">
+                <xp:this.dojoAttributes>
+                    <xp:dojoAttribute value="検索" name="placeHolder">
+                    </xp:dojoAttribute>
+                </xp:this.dojoAttributes>
+                <xp:eventHandler event="onchange" submit="true"
+                    refreshMode="norefresh">
+                    <xp:this.action><![CDATA[#{javascript:(function(_this){
+	var _seach = @Trim(_this.parent.getValue()),
+        _uicont = _this.parent.parent.parent.parent,
+        _manager = new RITS.ViewTablePlus.Manager(),
+        _controle = _manager.getControle(_uicont);
+    _controle._setSearch(_seach);
+    print("search " + _seach);
+})(this);}]]></xp:this.action>
+                </xp:eventHandler>
+            </xp:inputText>
+            <xp:comboBox id="comboBox1" value="AND" style="padding: 3px 1px 2px 1px;" rendered="false">
+
+                <xp:selectItem itemLabel="AND" itemValue="AND"></xp:selectItem>
+                <xp:selectItem itemLabel="OR" itemValue="OR"></xp:selectItem>
+            </xp:comboBox>
+            <xp:button value="" id="button1"
+                styleClass="lotusSearchButton"
+                outerStyleClass="lotusBtnImg">
+                <xp:eventHandler event="onclick" submit="true"
+                    refreshMode="complete" immediate="false"
+                    save="true">
+                </xp:eventHandler>
+            </xp:button>
+            <xp:button value="" id="button2" outerStyleClass="lotusBtnImg" styleClass="clearButton">
+            </xp:button>
+        </xp:span>
+    </xp:div>
+
+    <div class="lotusActionBar">
+        <span class="lotusBtn lotusBtnAction lotusLeft" role="button">
+            <xp:link escape="true" text=" 全展開" id="expandAll"
+                value="#" rendered="#{javascript:compositeData.isShowExpansion === null || compositeData.isShowExpansion === true;}">
+                <xp:image id="image1" url="/Plus.png"></xp:image>
+                <xp:eventHandler event="onclick" submit="true"
+                    refreshMode="complete">
+                    <xp:this.action><![CDATA[#{javascript:(function(_this){
+	var vtMng = RITS.ViewTablePlus.Manager.getInstance();
+	var vtCtr = vtMng.getControle(_this.parent.parent.parent.parent);
+	var vwPanel= vtCtr.getViewPanel();
+	var model = vwPanel.getDataModel();
+	var container = model.getDominoViewDataContainer();
+	container.expandAll();
+})(this);}]]></xp:this.action>
+                </xp:eventHandler>
+            </xp:link>
+        </span>
+        <span class="lotusBtn lotusBtnAction lotusLeft" role="button">
+            <xp:link escape="true" text=" 全省略" id="link1" value="#" rendered="#{javascript:compositeData.isShowCollapse === null || compositeData.isShowCollapse === true}">
+                <xp:image id="image2" url="/Minus.png"></xp:image>
+                <xp:eventHandler event="onclick" submit="true"
+                    refreshMode="complete">
+                    <xp:this.action><![CDATA[#{javascript:(function(_this){
+    var vtMng = RITS.ViewTablePlus.Manager.getInstance();
+    var vtCtr = vtMng.getControle(_this.parent.parent.parent.parent);
+    var vwPanel= vtCtr.getViewPanel();
+	try {
+	   //最初のページに移動
+	    vwPanel.gotoFirstPage();
+	} catch (e) {}
+	
+	finally{
+	    var model = vwPanel.getDataModel();
+	    model.getDominoViewDataContainer().collapseAll();
+	}
+})(this);}]]></xp:this.action>
+                </xp:eventHandler>
+            </xp:link>
+        </span>
+        <span class="lotusBtn lotusBtnAction lotusLeft" role="button">
+            <xp:link escape="true" text=" 新規作成" id="link2"
+                rendered="#{javascript:compositeData.isForManage || context.getUrl().getPath().match('MasterManagement.xsp$');}">
+                <xp:image id="image3" url="/Document.png"></xp:image>
+            </xp:link>
+        </span>
+        <div class="lotusRight" style="vertical-align: top;">
+            <xp:panel styleClass="lotusBtn lotusBtnAction lotusLeft"
+                role="button"
+                rendered="#{javascript:compositeData.isForManage}"
+                tagName="span">
+                <a href="javascript:;">
+                    <img src="Star.png" />
+                    &#160;全選択
+                </a>
+            </xp:panel>
+            <xp:panel styleClass="lotusBtn lotusBtnAction lotusLeft"
+                role="button"
+                rendered="#{javascript:compositeData.isForManage}"
+                tagName="span">
+                <a href="javascript:;">
+                    <img src="Star Empty.png" />
+                    &#160;全選択解除
+                </a>
+            </xp:panel>
+            <xp:panel styleClass="lotusBtn lotusBtnAction lotusLeft"
+                role="button"
+                rendered="#{javascript:compositeData.isForManage}"
+                tagName="span">
+                <a href="javascript:;">
+                    <img src="Trash.png" />
+                    &#160;削除依頼
+                </a>
+            </xp:panel>
+            <xp:panel styleClass="lotusBtn lotusBtnAction lotusLeft"
+                role="button"
+                rendered="#{javascript:compositeData.isForManage || context.getUrl().getPath().match('MasterManagement.xsp$');}"
+                tagName="span">
+                <a href="javascript:;">
+                    <img src="Trash.png" />
+                    &#160;削除
+                </a>
+            </xp:panel>
+            <span>
+                表示件数:
+                <xp:comboBox id="selectedRows">
+                    <xp:this.defaultValue><![CDATA[${javascript:return compositeData.defaultRowNumberAtPage+"";}]]></xp:this.defaultValue>
+                    <xp:selectItems>
+                        <xp:this.value><![CDATA[${javascript:return compositeData.rowNumbersAtPage.split('\n');
+}]]></xp:this.value>
+                    </xp:selectItems>
+                    <xp:eventHandler event="onchange" submit="true"
+                        refreshMode="partial"
+                        refreshId='#{javascript:(function(){
+    var _selectedRows:com.ibm.xsp.component.xp.XspSelectOneMenu = getComponent("selectedRows"),
+        _uicont = _selectedRows.getParent().getParent().getParent().getParent(),
+        _manager = new RITS.ViewTablePlus.Manager(),
+        _controle = _manager.getControle(_uicont);
+    
+    return _controle.getViewPanel().getId();
+})();}'>
+                        <xp:this.action><![CDATA[#{javascript:(function(){
+    var _selectedRows:com.ibm.xsp.component.xp.XspSelectOneMenu = getComponent("selectedRows"),
+        _uicont = _selectedRows.parent.parent.parent.parent,
+        _manager = new RITS.ViewTablePlus.Manager(),
+        _controle = _manager.getControle(_uicont);
+    _controle._setRows(+_selectedRows.getValue());
+})();}]]></xp:this.action>
+                    </xp:eventHandler>
+                </xp:comboBox>
+            </span>
+        </div>
+    </div>
+    <xp:callback facetName="facet_1" id="callback1"></xp:callback>
+</xp:view>

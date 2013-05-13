@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+    
+    <xp:this.afterPageLoad><![CDATA[#{javascript:var image1:com.ibm.xsp.component.xp.XspGraphicImage = getComponent("image1");
+var event:com.ibm.xsp.component.xp.XspEventHandler = image1.getChildren()[0];
+event.setActionListener(compositeData.deleteEventHandler);
+}]]></xp:this.afterPageLoad>
+    <ul class="lotusList lotusEditable lotusMeta">
+        <xp:repeat id="repeat1" rows="99" disableOutputTag="true"
+            value="#{javascript:compositeData.data.getValue();}"
+            indexVar="${javascript:compositeData.data.getIndexVar();}"
+            var="${javascript:compositeData.data.getVar();}">
+            <li>
+                <span class="lotusLeft lotusPerson">
+                    <xp:callback facetName="linkRow" id="linkRow"></xp:callback>
+                </span>
+                <a class="lotusDelete" href="javascript:;"
+                    title="削除">
+                        <xp:image url="/css/images/blank.gif" id="image1">
+                            <xp:eventHandler event="onclick" submit="true" refreshMode="complete">
+                            </xp:eventHandler>
+                        </xp:image>
+                    <span class="lotusAltText">X</span>
+                </a>
+            </li>
+        </xp:repeat>
+    </ul>
+</xp:view>

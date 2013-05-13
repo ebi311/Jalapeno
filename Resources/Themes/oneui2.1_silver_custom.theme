@@ -1,0 +1,41 @@
+<theme extends="oneuiv2.1_silver" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="platform:/plugin/com.ibm.designer.domino.stylekits/schema/stylekit.xsd">
+    <resource>
+        <content-type>text/css</content-type>
+        <href>./css/smoothness/jquery-ui-1.10.1.custom.min.css</href>
+    </resource>
+    <resource>
+        <content-type>text/css</content-type>
+        <href>./oneuiv2.1_silver_override.css</href>
+    </resource>
+    <resource>
+        <content-type>text/css</content-type>
+        <href>./SpriteSilver.css</href>
+    </resource>
+    <resource>
+        <content-type>application/x-javascript</content-type>
+        <href>./js/jquery-1.9.1.min.js</href>
+    </resource>
+    <resource>
+        <content-type>application/x-javascript</content-type>
+        <href>./js/jquery-ui-1.10.1.custom.min.js</href>
+    </resource>
+    <resource>
+        <content-type>application/x-javascript</content-type>
+        <href>./RitsTemplateCommon_JS.js</href>
+    </resource>
+<!--
+        このパターンを使用して、コントロール用のプロパティ名と値のペアを定義します。
+    <control target="xsp" override="true">
+        <name>Text.ComputedField</name>
+        <property mode='override'>
+            <name>styleClass</name>
+            <value>computed</value>
+        </property>
+    </control> -->
+    <!--
+        <control> <name>[Control Name]</name> <property> <name>[property
+        Name]</name> <value>[property Value]</value> </property>
+        </control>
+    -->
+</theme>

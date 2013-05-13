@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+    xmlns:xe="http://www.ibm.com/xsp/coreex">
+
+    <xc:OutlineFrame selectedTabLabel="Home" loginUserName="リコー 太郎"
+    	ieCompatible="9">
+    	<xc:this.OrgLogo>
+    		<xc:OrgLogo image="/org-logo.png" text="鹿児島５G"></xc:OrgLogo>
+    	</xc:this.OrgLogo>
+    	<xp:this.facets>
+    		<xp:tabbedPanel id="tabbedPanel1" xp:key="Content"
+    		    partialRefresh="true">
+    		    <xp:tabPanel id="tabPanel1" label="カテゴリ別">
+    		        <xp:viewPanel rows="30" id="viewPanel1" target="doc"
+    		            viewStyle="width:100%">
+    		            <xp:this.facets>
+    		                <xp:pager partialRefresh="true"
+    		                    layout="Previous Group Next"
+    		                    xp:key="headerPager" id="pager1">
+    		                </xp:pager>
+    		            </xp:this.facets>
+    		            <xp:this.data>
+    		                <xp:dominoView viewName="ArticlesByCategory"
+    		                    var="articlesByCategory">
+    		                </xp:dominoView>
+    		            </xp:this.data>
+    		            <xp:viewColumn columnName="textCategory1"
+    		                id="viewColumn1">
+    		                <xp:viewColumnHeader id="viewColumnHeader1"
+    		                    style="width:2em">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn columnName="textCategory2"
+    		                id="viewColumn2">
+    		                <xp:viewColumnHeader id="viewColumnHeader2"
+    		                    style="width:2em">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn columnName="textCategory3"
+    		                id="viewColumn3">
+    		                <xp:viewColumnHeader id="viewColumnHeader3"
+    		                    style="width:2em">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn columnName="textSubject"
+    		                id="viewColumn4" displayAs="link"
+    		                openDocAsReadonly="true">
+    		                <xp:viewColumnHeader value="タイトル"
+    		                    id="viewColumnHeader4">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn id="viewColumn5"
+    		                columnName="textCreator">
+    		                <xp:this.facets>
+    		                    <xp:viewColumnHeader xp:key="header"
+    		                        id="viewColumnHeader5" value="投稿者">
+    		                    </xp:viewColumnHeader>
+    		                </xp:this.facets>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn id="作成日" columnName="$6">
+    		                <xp:this.facets>
+    		                    <xp:viewColumnHeader xp:key="header"
+    		                        id="viewColumnHeader6" value="作成日">
+    		                    </xp:viewColumnHeader>
+    		                </xp:this.facets>
+    		                <xp:this.converter>
+    		                    <xp:convertDateTime type="date"></xp:convertDateTime>
+    		                </xp:this.converter>
+    		            </xp:viewColumn>
+    		        </xp:viewPanel>
+    		    </xp:tabPanel>
+    		    <xp:tabPanel id="tabPanel2" label="作成者別">
+    		        <xp:viewPanel rows="30" id="viewPanel2"
+    		            viewStyle="width:100%">
+    		            <xp:this.facets>
+    		                <xp:pager partialRefresh="true"
+    		                    layout="Previous Group Next"
+    		                    xp:key="headerPager" id="pager2">
+    		                </xp:pager>
+    		            </xp:this.facets>
+    		            <xp:this.data>
+    		                <xp:dominoView var="articlesByCreator"
+    		                    viewName="ArticlesByCreator">
+    		                </xp:dominoView>
+    		            </xp:this.data>
+    		            <xp:viewColumn columnName="textCreator"
+    		                id="viewColumn6">
+    		                <xp:viewColumnHeader id="viewColumnHeader7"
+    		                    style="width:2em">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn columnName="textCategory1"
+    		                id="viewColumn7">
+    		                <xp:viewColumnHeader id="viewColumnHeader8"
+    		                    style="width:2em">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn columnName="textCategory2"
+    		                id="viewColumn8">
+    		                <xp:viewColumnHeader id="viewColumnHeader9"
+    		                    style="width:2em">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn columnName="textCategory3"
+    		                id="viewColumn9">
+    		                <xp:viewColumnHeader id="viewColumnHeader10"
+    		                    style="width:2em">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn columnName="textSubject"
+    		                id="viewColumn10" displayAs="link">
+    		                <xp:viewColumnHeader value="Subject"
+    		                    id="viewColumnHeader11">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		            <xp:viewColumn columnName="$6"
+    		                id="viewColumn11">
+    		                <xp:viewColumnHeader value="作成日"
+    		                    id="viewColumnHeader12">
+    		                </xp:viewColumnHeader>
+    		            </xp:viewColumn>
+    		        </xp:viewPanel>
+    		    </xp:tabPanel>
+    		</xp:tabbedPanel>
+    		<xp:panel xp:key="ColRight">
+    			<xc:Section title="連絡先" isOpen="true">
+    				<xp:this.facets>
+    					<xc:DataList xp:key="chunk">
+    						<xc:this.data>
+    							<xp:dataContext var="item"
+    								indexVar="index">
+    								<xp:this.value><![CDATA[#{javascript:[{"text":"長谷川 xx-xxxx"},
+{"text":"小山田 xx-xxxx"},
+{"text":"栫 xx-xxxx"}]}]]></xp:this.value>
+    							</xp:dataContext>
+    						</xc:this.data>
+
+
+
+    						<xc:this.deleteEventHandler>
+    							<xp:executeScript>
+    								<xp:this.script><![CDATA[#{javascript:print("hoge!!!" + item.text);}]]></xp:this.script>
+    							</xp:executeScript>
+    						</xc:this.deleteEventHandler>
+    						<xp:this.facets>
+    							<xp:link escape="true"
+    								text="#{javascript:item.text;}" id="link1"
+    								xp:key="linkRow">
+    							</xp:link>
+    						</xp:this.facets>
+
+
+    					</xc:DataList>
+    				</xp:this.facets>
+    			</xc:Section>
+    			<xc:Section title="クイックリンク" isOpen="false">
+    				<xp:this.facets>
+    					<xc:DataList xp:key="chunk">
+    						<xc:this.data>
+    							<xp:dataContext var="item"
+    								indexVar="index">
+    								<xp:this.value><![CDATA[#{javascript:[{
+	title:"RITSポータル",
+	href:"./"
+},{
+	title:"出退勤",
+	href:"./"
+},{
+	title:"GVAS",
+	href:"./"
+},{
+	title:"SynCro",
+	href:"./"
+}];}]]></xp:this.value>
+    							</xp:dataContext>
+    						</xc:this.data>
+    						<xc:this.deleteEventHandler>
+    							<xp:executeScript>
+    								<xp:this.script><![CDATA[#{javascript:""}]]></xp:this.script>
+    							</xp:executeScript>
+    						</xc:this.deleteEventHandler>
+    						<xp:this.facets>
+    							<xp:link escape="true"
+    								text="#{javascript:item.title}" id="link2" xp:key="linkRow"
+    								value="#{javascript:item.href}">
+    							</xp:link>
+    						</xp:this.facets>
+    					</xc:DataList>
+    				</xp:this.facets>
+    			</xc:Section>
+    		</xp:panel>
+    		<xc:MenuSection xp:key="ColLeft">
+    			<xc:this.MemuGroup>
+    				<xc:MemuGroup>
+    					<xc:this.Headline>
+    						<xc:Headline text="意見"></xc:Headline>
+    					</xc:this.Headline>
+    					<xc:this.Items>
+    						<xc:Items selected="true" text="カテゴリ別"
+    						    href="./Category.xsp">
+    						</xc:Items>
+    						<xc:Items selected="false" text="作成者別"
+    						    href="./Creator.xsp">
+    						</xc:Items>
+    						<xc:Items selected="false" text="更新日別"
+    						    href="./update.xsp">
+    						</xc:Items>
+    					</xc:this.Items>
+    				</xc:MemuGroup>
+    				<xc:MemuGroup>
+    					<xc:this.Items>
+    						<xc:Items selected="false" text="カテゴリ別"
+    						    href="./Category.xsp">
+    						</xc:Items>
+    						<xc:Items selected="false" text="質問者別"
+    						    href="./Creator.xsp">
+    						</xc:Items>
+    						<xc:Items selected="false" text="ステータス別"
+    						    href="./Status.xsp">
+    						</xc:Items>
+    						<xc:Items selected="false" text="更新日順"
+    						    href="./Update.xsp">
+    						</xc:Items>
+    					</xc:this.Items>
+    					<xc:this.Headline>
+    						<xc:Headline text="やり取り"></xc:Headline>
+    					</xc:this.Headline>
+    				</xc:MemuGroup>
+    			</xc:this.MemuGroup>
+    		</xc:MenuSection>
+    	</xp:this.facets>
+    	<xc:this.Visibility>
+    		<xc:Visibility showBanner="true" showTitleBar="true"
+    			showContent="true" showLeft="true" showRight="true"
+    			showFooter="true">
+    		</xc:Visibility>
+    	</xc:this.Visibility>
+    	<xc:this.Logo>
+    		<xc:Logo image="/logo.png"></xc:Logo>
+    	</xc:this.Logo>
+    	<xc:this.Version>
+    		<xc:Version number="0.0.0" position="footer"></xc:Version>
+    	</xc:this.Version>
+    	<xc:this.Tab>
+    		<xc:Tab separate="false" href="./" label="Home"></xc:Tab>
+    		
+    		
+    		<xc:Tab href="./MasterMaint.xsp" label="マスタ管理"
+    			separate="false">
+    		</xc:Tab>
+    		<xc:Tab separate="true" href="./SystemSettings.xsp"
+    			label="システム管理">
+    		</xc:Tab>
+
+    	</xc:this.Tab>
+    </xc:OutlineFrame>
+</xp:view>

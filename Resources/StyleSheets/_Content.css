@@ -1,0 +1,54 @@
+.lotusHeader h1{
+    border-bottom: 1px solid #aaa;
+}
+.content .lotusVertTable{
+    width: 985ｐｘ;
+}
+.content .lotusVertTable > tbody > tr > td,
+.content .lotusVertTable > tbody > tr > th{
+    border-bottom: 1px solid #eee;
+    padding: 0.5em 0 0 0.5em;
+    height: 1.5em;
+}
+.content .lotusVertTable > tbody > tr > th{
+    width: 10em;
+}
+.content .lotusVertTable > tbody > tr > td{
+    border-left: 1px solid #eee;
+}
+.content .xspDataTableFileDownload {
+}
+.content .xspDataTableFileDownload td{
+    padding: 0.2em 1em !important;
+}
+.content .xspDataTableFileDownload .xspDataTableFileDownloadName{
+    min-width: 20em;
+}
+.content .infoGrid{
+    font-size: 0.9em;
+}
+.content .infoGrid thead th{
+    background-color: #eee;
+    border-bottom: 1px solid #aaa;
+}
+#DutiesSelecter{
+    background-color: #e5e696;
+    vertical-align: top;
+    position: absolute;
+}
+.DutiesSelecter ul{
+    display: inline-block;
+    vertical-align: top;
+}
+#DutiesSelecter ul li{
+    list-style-type: none
+}
+#DutiesSelecter  .toolbar{
+    padding: 0.5em;
+    text-align: right;
+}
+h1 .status{
+    font-size: 70%;
+    color: #258dc8;
+    margin-left: 2em;
+}

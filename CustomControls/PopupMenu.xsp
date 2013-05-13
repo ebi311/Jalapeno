@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+    <xp:this.afterPageLoad><![CDATA[#{javascript:var menuItemClickEvent:com.ibm.xsp.component.xp.XspEventHandler = getComponent("menuItemClickEvent");
+}]]></xp:this.afterPageLoad>
+    <xp:this.resources>
+        <xp:script src="/PopupMenu_JS.js" clientSide="true"></xp:script>
+    </xp:this.resources>
+    <xp:panel id="menuList" styleClass="lotusActionMenu lotusPlain" role="menu"
+        tagName="ul">
+        <xp:repeat rows="99"
+            value="#{javascript:compositeData.MenuItem;}" var="item"
+            indexVar="index" disableOutputTag="true">
+            <li role="menuitem">
+                <xp:link id="menuItem" escape="true"
+                    value="#{javascript:item.href;}">
+                    <xp:this.text><![CDATA[#{javascript:item.text;}]]></xp:this.text>
+                    <xp:this.title><![CDATA[#{javascript:var _this:com.ibm.xsp.component.xp.XspOutputLink = this;
+var menuItemClickEvent:com.ibm.xsp.component.xp.XspEventHandler = getComponent("menuItemClickEvent");
+menuItemClickEvent.setActionListener(item.serverOnClick);
+}]]></xp:this.title>
+                    <xp:eventHandler event="onclick" submit="false"
+                        refreshMode="complete" id="menuItemClickEvent"
+                        script="#{javascript:item.clientOnClick;}">
+                    </xp:eventHandler>
+                </xp:link>
+            </li>
+        </xp:repeat>
+    </xp:panel>
+    <xp:scriptBlock>
+        <xp:this.value><![CDATA[
+dojo.addOnLoad(function(){
+    PopupMenu.setOnlick(
+    "#{javascript:getClientId(compositeData.target);}",
+    "#{id:menuList}"
+    );
+});
+]]></xp:this.value>
+    </xp:scriptBlock>
+</xp:view>
