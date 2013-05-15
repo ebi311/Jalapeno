@@ -7,7 +7,8 @@
  * 2013.01.10.001 : カテゴリ開閉時にスクロール位置を保持する
  *                  クライアントスクリプトで既読の表示変更と該当文書へのスクロールを行う
  */
-var RITS = RITS || {};
+print('viewtable:' + applicationScope.get('RITS'))
+var RITS = applicationScope.get('RITS') || {};
 /**
  * 拡張テーブルビュー
  * @namespace
@@ -242,3 +243,4 @@ RITS.ViewTablePlus.Controle = function (controle) {
         }
     }
 };
+applicationScope.put('RITS', RITS);

@@ -1,167 +1,243 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
+    xmlns:xc="http://www.ibm.com/xsp/custom"
     xmlns:xe="http://www.ibm.com/xsp/coreex">
 
+    <xp:this.beforePageLoad><![CDATA[#{javascript:var controller = new home.Controller();
+}]]></xp:this.beforePageLoad>
+    <xp:this.afterRestoreView><![CDATA[#{javascript:var controller = new home.Controller();
+}]]></xp:this.afterRestoreView>
+    <xp:this.resources>
+        <xp:script src="/Home_JSS.jss" clientSide="false"></xp:script>
+        <xp:styleSheet href="/Common.css"></xp:styleSheet>
+        <xp:script src="https://www.google.com/jsapi"
+            clientSide="true">
+        </xp:script>
+    </xp:this.resources>
     <xc:OutlineFrame selectedTabLabel="Home" loginUserName="リコー 太郎"
-    	ieCompatible="9">
-    	<xc:this.OrgLogo>
-    		<xc:OrgLogo image="/org-logo.png" text="鹿児島５G"></xc:OrgLogo>
-    	</xc:this.OrgLogo>
-    	<xp:this.facets>
-    		<xp:tabbedPanel id="tabbedPanel1" xp:key="Content"
-    		    partialRefresh="true">
-    		    <xp:tabPanel id="tabPanel1" label="カテゴリ別">
-    		        <xp:viewPanel rows="30" id="viewPanel1" target="doc"
-    		            viewStyle="width:100%">
-    		            <xp:this.facets>
-    		                <xp:pager partialRefresh="true"
-    		                    layout="Previous Group Next"
-    		                    xp:key="headerPager" id="pager1">
-    		                </xp:pager>
-    		            </xp:this.facets>
-    		            <xp:this.data>
-    		                <xp:dominoView viewName="ArticlesByCategory"
-    		                    var="articlesByCategory">
-    		                </xp:dominoView>
-    		            </xp:this.data>
-    		            <xp:viewColumn columnName="textCategory1"
-    		                id="viewColumn1">
-    		                <xp:viewColumnHeader id="viewColumnHeader1"
-    		                    style="width:2em">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn columnName="textCategory2"
-    		                id="viewColumn2">
-    		                <xp:viewColumnHeader id="viewColumnHeader2"
-    		                    style="width:2em">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn columnName="textCategory3"
-    		                id="viewColumn3">
-    		                <xp:viewColumnHeader id="viewColumnHeader3"
-    		                    style="width:2em">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn columnName="textSubject"
-    		                id="viewColumn4" displayAs="link"
-    		                openDocAsReadonly="true">
-    		                <xp:viewColumnHeader value="タイトル"
-    		                    id="viewColumnHeader4">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn id="viewColumn5"
-    		                columnName="textCreator">
-    		                <xp:this.facets>
-    		                    <xp:viewColumnHeader xp:key="header"
-    		                        id="viewColumnHeader5" value="投稿者">
-    		                    </xp:viewColumnHeader>
-    		                </xp:this.facets>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn id="作成日" columnName="$6">
-    		                <xp:this.facets>
-    		                    <xp:viewColumnHeader xp:key="header"
-    		                        id="viewColumnHeader6" value="作成日">
-    		                    </xp:viewColumnHeader>
-    		                </xp:this.facets>
-    		                <xp:this.converter>
-    		                    <xp:convertDateTime type="date"></xp:convertDateTime>
-    		                </xp:this.converter>
-    		            </xp:viewColumn>
-    		        </xp:viewPanel>
-    		    </xp:tabPanel>
-    		    <xp:tabPanel id="tabPanel2" label="作成者別">
-    		        <xp:viewPanel rows="30" id="viewPanel2"
-    		            viewStyle="width:100%">
-    		            <xp:this.facets>
-    		                <xp:pager partialRefresh="true"
-    		                    layout="Previous Group Next"
-    		                    xp:key="headerPager" id="pager2">
-    		                </xp:pager>
-    		            </xp:this.facets>
-    		            <xp:this.data>
-    		                <xp:dominoView var="articlesByCreator"
-    		                    viewName="ArticlesByCreator">
-    		                </xp:dominoView>
-    		            </xp:this.data>
-    		            <xp:viewColumn columnName="textCreator"
-    		                id="viewColumn6">
-    		                <xp:viewColumnHeader id="viewColumnHeader7"
-    		                    style="width:2em">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn columnName="textCategory1"
-    		                id="viewColumn7">
-    		                <xp:viewColumnHeader id="viewColumnHeader8"
-    		                    style="width:2em">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn columnName="textCategory2"
-    		                id="viewColumn8">
-    		                <xp:viewColumnHeader id="viewColumnHeader9"
-    		                    style="width:2em">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn columnName="textCategory3"
-    		                id="viewColumn9">
-    		                <xp:viewColumnHeader id="viewColumnHeader10"
-    		                    style="width:2em">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn columnName="textSubject"
-    		                id="viewColumn10" displayAs="link">
-    		                <xp:viewColumnHeader value="Subject"
-    		                    id="viewColumnHeader11">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		            <xp:viewColumn columnName="$6"
-    		                id="viewColumn11">
-    		                <xp:viewColumnHeader value="作成日"
-    		                    id="viewColumnHeader12">
-    		                </xp:viewColumnHeader>
-    		            </xp:viewColumn>
-    		        </xp:viewPanel>
-    		    </xp:tabPanel>
-    		</xp:tabbedPanel>
-    		<xp:panel xp:key="ColRight">
-    			
-    			
-    		</xp:panel>
-    		<xc:MenuSection xp:key="ColLeft">
-    			<xc:this.MemuGroup>
-    				<xc:MemuGroup>
+        ieCompatible="9">
+        <xc:this.OrgLogo>
+            <xc:OrgLogo image="/org-logo.png" text="鹿児島５G"></xc:OrgLogo>
+        </xc:this.OrgLogo>
+        <xp:this.facets>
+            <xp:panel xp:key="Content">
+                <xc:viewTablePlus bodyHeight="150px"
+                    isFixedHeader="true" isOpenWindow="false"
+                    defaultRowNumberAtPage="20" isForManage="false"
+                    isShowExpansion="false" isShowCollapse="false">
 
-    				    <xc:this.Items>
-    				        <xc:Items selected="true" text="集計参照"
-    				            href="./Home.xsp">
-    				        </xc:Items>
-    				        <xc:Items selected="false" text="入力"
-    				            href="./Creator.xsp">
-    				        </xc:Items>
-    				        <xc:Items selected="false"
-    				            href="./update.xsp" text="過去訂正">
-    				        </xc:Items>
-    				        <xc:Items text="システム" selected="false"></xc:Items>
-    				    </xc:this.Items>
-    				    <xc:this.Headline>
-    				        <xc:Headline></xc:Headline>
-    				    </xc:this.Headline>
-    				</xc:MemuGroup>
-    				
-    			</xc:this.MemuGroup>
-    		</xc:MenuSection>
-    	</xp:this.facets>
-    	<xc:this.Visibility>
-    		<xc:Visibility showBanner="true" showTitleBar="true"
-    		    showContent="true" showLeft="true" showRight="false"
-    		    showFooter="true">
-    		</xc:Visibility>
-    	</xc:this.Visibility>
-    	<xc:this.Logo>
-    		<xc:Logo image="/logo.png"></xc:Logo>
-    	</xc:this.Logo>
-    	<xc:this.Version>
-    		<xc:Version number="0.0.0" position="footer"></xc:Version>
-    	</xc:this.Version>
-    	
+                    <xc:this.rowNumbersAtPage><![CDATA[20
+50
+100]]></xc:this.rowNumbersAtPage>
+                    <xp:this.facets>
+                        <xp:viewPanel rows="30" id="viewPanel1"
+                            xp:key="facet_1">
+                            <xp:this.facets>
+                                <xp:pager partialRefresh="true"
+                                    layout="Previous Group Next"
+                                    xp:key="headerPager" id="pager1">
+                                </xp:pager>
+                            </xp:this.facets>
+                            <xp:this.data>
+                                <xp:dominoView var="view1"
+                                    viewName="byDate">
+                                </xp:dominoView>
+                            </xp:this.data>
+                            <xp:viewColumn id="viewColumn10" columnName="$13">
+                                <xp:this.facets>
+                                    <xp:viewColumnHeader xp:key="header"
+                                        id="viewColumnHeader10" style="width:7em" value="年月">
+                                    </xp:viewColumnHeader>
+                                </xp:this.facets>
+                            </xp:viewColumn>
+                            <xp:viewColumn columnName="dateInput"
+                                id="viewColumn1">
+
+                                <xp:this.converter>
+                                    <xp:convertDateTime pattern="dd"></xp:convertDateTime>
+                                </xp:this.converter>
+                                <xp:viewColumnHeader value="日付"
+                                    id="viewColumnHeader1"
+                                    style="width:3em">
+                                </xp:viewColumnHeader>
+                            </xp:viewColumn>
+                            <xp:viewColumn columnName="numCounter00"
+                                id="viewColumn2"
+                                style="text-align: right">
+                                <xp:this.converter>
+                                    <xp:convertNumber type="number"
+                                        integerOnly="true">
+                                    </xp:convertNumber>
+                                </xp:this.converter>
+                                <xp:viewColumnHeader
+                                    id="viewColumnHeader2"
+                                    style="text-align: right">
+                                    <xp:this.value><![CDATA[${javascript:controller.indexToName[0];}]]></xp:this.value>
+                                </xp:viewColumnHeader>
+                            </xp:viewColumn>
+                            <xp:viewColumn columnName="numCounter01"
+                                id="viewColumn3"
+                                style="text-align: right">
+                                <xp:this.converter>
+                                    <xp:convertNumber type="number"
+                                        integerOnly="true">
+                                    </xp:convertNumber>
+                                </xp:this.converter>
+                                <xp:viewColumnHeader
+                                    id="viewColumnHeader3"
+                                    style="text-align: right">
+                                    <xp:this.value><![CDATA[${javascript:controller.indexToName[1];}]]></xp:this.value>
+                                </xp:viewColumnHeader>
+                            </xp:viewColumn>
+                            <xp:viewColumn columnName="numCounter02"
+                                id="viewColumn4"
+                                style="text-align: right">
+                                <xp:this.converter>
+                                    <xp:convertNumber type="number"
+                                        integerOnly="true">
+                                    </xp:convertNumber>
+                                </xp:this.converter>
+                                <xp:viewColumnHeader
+                                    id="viewColumnHeader4"
+                                    style="text-align: right">
+                                    <xp:this.value><![CDATA[${javascript:controller.indexToName[2];}]]></xp:this.value>
+                                </xp:viewColumnHeader>
+                            </xp:viewColumn>
+                            <xp:viewColumn columnName="numCounter03"
+                                id="viewColumn5"
+                                style="text-align: right">
+                                <xp:this.converter>
+                                    <xp:convertNumber type="number"
+                                        integerOnly="true">
+                                    </xp:convertNumber>
+                                </xp:this.converter>
+                                <xp:viewColumnHeader
+                                    id="viewColumnHeader5"
+                                    style="text-align: right">
+                                    <xp:this.value><![CDATA[${javascript:controller.indexToName[3];}]]></xp:this.value>
+                                </xp:viewColumnHeader>
+                            </xp:viewColumn>
+                            <xp:viewColumn columnName="numCounter04"
+                                id="viewColumn6"
+                                style="text-align: right">
+                                <xp:this.converter>
+                                    <xp:convertNumber type="number"
+                                        integerOnly="true">
+                                    </xp:convertNumber>
+                                </xp:this.converter>
+                                <xp:viewColumnHeader
+                                    id="viewColumnHeader6"
+                                    style="text-align: right">
+                                    <xp:this.value><![CDATA[${javascript:controller.indexToName[4];}]]></xp:this.value>
+                                </xp:viewColumnHeader>
+                            </xp:viewColumn>
+                            <xp:viewColumn columnName="numCounter05"
+                                id="viewColumn7"
+                                style="text-align: right">
+                                <xp:this.converter>
+                                    <xp:convertNumber type="number"
+                                        integerOnly="true">
+                                    </xp:convertNumber>
+                                </xp:this.converter>
+                                <xp:viewColumnHeader
+                                    id="viewColumnHeader7"
+                                    style="text-align: right">
+                                    <xp:this.value><![CDATA[${javascript:controller.indexToName[5];}]]></xp:this.value>
+                                </xp:viewColumnHeader>
+                            </xp:viewColumn>
+                            <xp:viewColumn columnName="numCounter06"
+                                id="viewColumn8"
+                                style="text-align: right">
+                                <xp:this.converter>
+                                    <xp:convertNumber type="number"
+                                        integerOnly="true">
+                                    </xp:convertNumber>
+                                </xp:this.converter>
+                                <xp:viewColumnHeader
+                                    id="viewColumnHeader8"
+                                    style="text-align: right">
+                                    <xp:this.value><![CDATA[${javascript:controller.indexToName[6];}]]></xp:this.value>
+                                </xp:viewColumnHeader>
+                            </xp:viewColumn>
+                            <xp:viewColumn columnName="numCounter07"
+                                id="viewColumn9"
+                                style="text-align: right">
+                                <xp:this.converter>
+                                    <xp:convertNumber type="number"
+                                        integerOnly="true">
+                                    </xp:convertNumber>
+                                </xp:this.converter>
+                                <xp:viewColumnHeader
+                                    id="viewColumnHeader9"
+                                    style="text-align: right">
+                                    <xp:this.value><![CDATA[${javascript:controller.indexToName[7];}]]></xp:this.value>
+                                </xp:viewColumnHeader>
+                            </xp:viewColumn>
+
+                        </xp:viewPanel>
+                    </xp:this.facets>
+                </xc:viewTablePlus>
+                <div id="chart_div" style="width: 900px; height: 500px;"></div>
+            </xp:panel>
+            <xp:panel xp:key="ColRight">
+
+
+            </xp:panel>
+            <xc:MenuSection xp:key="ColLeft">
+                <xc:this.MemuGroup>
+                    <xc:MemuGroup>
+
+                        <xc:this.Items>
+                            <xc:Items selected="true" text="集計参照"
+                                href="./Home.xsp">
+                            </xc:Items>
+                            <xc:Items selected="false" text="入力"
+                                href="./Creator.xsp">
+                            </xc:Items>
+                            <xc:Items selected="false"
+                                href="./update.xsp" text="過去訂正">
+                            </xc:Items>
+                            <xc:Items text="システム" selected="false"></xc:Items>
+                        </xc:this.Items>
+                        <xc:this.Headline>
+                            <xc:Headline></xc:Headline>
+                        </xc:this.Headline>
+                    </xc:MemuGroup>
+
+                </xc:this.MemuGroup>
+            </xc:MenuSection>
+        </xp:this.facets>
+        <xc:this.Visibility>
+            <xc:Visibility showBanner="true" showTitleBar="true"
+                showContent="true" showLeft="true" showRight="false"
+                showFooter="true">
+            </xc:Visibility>
+        </xc:this.Visibility>
+        <xc:this.Logo>
+            <xc:Logo image="/logo.png"></xc:Logo>
+        </xc:this.Logo>
+        <xc:this.Version>
+            <xc:Version number="0.0.0" position="footer"></xc:Version>
+        </xc:this.Version>
+
     </xc:OutlineFrame>
+    <xp:scriptBlock id="scriptBlock1">
+        <xp:this.value><![CDATA[
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(#{javascript:R$.objectToJSON(controller.sum);});
+
+        var options = {
+          title: 'Company Performance',
+          vAxis: {title: '名前',  titleTextStyle: {color: 'blue'}},
+          
+        };
+
+        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+
+]]></xp:this.value>
+    </xp:scriptBlock>
 </xp:view>

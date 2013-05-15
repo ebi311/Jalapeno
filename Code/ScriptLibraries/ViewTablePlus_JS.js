@@ -239,9 +239,9 @@ dojo.declare('rits.widget.ViewTablePlus', [dijit._Widget, dijit._Templated], {
             if (this._headerTable !== null && this._bodyTable !== null) {            
             //スクロールバーの分だけ、ボディーテーブルの幅が短くなるので、ヘッダテーブルを揃える
                 //IEの場合はずれる
-                if (!dojo.isIE) {
+                //if (!dojo.isIE) {
                     dojo.style(this._headerTable[0], 'width', dojo.style(this._bodyTable[0], 'width') + 'px');
-                }
+                //}
             }
             //スクロール位置戻す
             var _outerDiv = this._bodyTable[0].parentElement;

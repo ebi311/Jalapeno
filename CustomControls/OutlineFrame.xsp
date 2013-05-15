@@ -3,6 +3,7 @@
     <xp:this.resources>
         <xp:styleSheet href="/OutlineFrame.css"></xp:styleSheet>
         <xp:script src="/OutlineFrame_JSS.jss" clientSide="false"></xp:script>
+        <xp:script src="/RitsCommon_JSS.jss" clientSide="false"></xp:script>
     </xp:this.resources>
     <xp:this.afterPageLoad><![CDATA[#{javascript:OutlineFrame.afterPageLoad();
 }]]></xp:this.afterPageLoad>

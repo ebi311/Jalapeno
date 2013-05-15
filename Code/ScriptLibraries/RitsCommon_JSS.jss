@@ -14,7 +14,9 @@ var __extendBuidinObject = true;
 /**
  * @namespace 共通関数の最上位オブジェクトです 。
  */
-var RITS = {} || RITS;
+print('common:' + applicationScope.get('RITS'))
+
+var RITS = applicationScope.get('RITS') || {};
 /**
  * @namespace 名前空間RITSのエイリアスです。
  * @description 名前空間"RITS"と比べて、短い表記ができる以外に違いはありません。
@@ -286,3 +288,4 @@ RITS.objectToJSON = function (obj) {
     }
     return ret;
 };
+applicationScope.put('RITS', RITS);

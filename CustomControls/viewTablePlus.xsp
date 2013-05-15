@@ -2,10 +2,11 @@
 <xp:view xmlns:xp="http://www.ibm.com/xsp/core" id="root"
     xmlns:xe="http://www.ibm.com/xsp/coreex" dojoParseOnLoad="true">
     <xp:this.resources>
-        <xp:script src="/ViewTablePlus_JSS.jss" clientSide="false"></xp:script>
+
         <xp:script src="/ViewTablePlus_JS.js" clientSide="true"></xp:script>
         <xp:styleSheet href="/ViewTablePlus.css"></xp:styleSheet>
         <xp:dojoModule name="dijit.form.TextBox"></xp:dojoModule>
+        <xp:script src="/ViewTablePlus_JSS.jss" clientSide="false"></xp:script>
     </xp:this.resources>
 
 
@@ -134,42 +135,7 @@
             </xp:link>
         </span>
         <div class="lotusRight" style="vertical-align: top;">
-            <xp:panel styleClass="lotusBtn lotusBtnAction lotusLeft"
-                role="button"
-                rendered="#{javascript:compositeData.isForManage}"
-                tagName="span">
-                <a href="javascript:;">
-                    <img src="Star.png" />
-                    &#160;全選択
-                </a>
-            </xp:panel>
-            <xp:panel styleClass="lotusBtn lotusBtnAction lotusLeft"
-                role="button"
-                rendered="#{javascript:compositeData.isForManage}"
-                tagName="span">
-                <a href="javascript:;">
-                    <img src="Star Empty.png" />
-                    &#160;全選択解除
-                </a>
-            </xp:panel>
-            <xp:panel styleClass="lotusBtn lotusBtnAction lotusLeft"
-                role="button"
-                rendered="#{javascript:compositeData.isForManage}"
-                tagName="span">
-                <a href="javascript:;">
-                    <img src="Trash.png" />
-                    &#160;削除依頼
-                </a>
-            </xp:panel>
-            <xp:panel styleClass="lotusBtn lotusBtnAction lotusLeft"
-                role="button"
-                rendered="#{javascript:compositeData.isForManage || context.getUrl().getPath().match('MasterManagement.xsp$');}"
-                tagName="span">
-                <a href="javascript:;">
-                    <img src="Trash.png" />
-                    &#160;削除
-                </a>
-            </xp:panel>
+
             <span>
                 表示件数:
                 <xp:comboBox id="selectedRows">
